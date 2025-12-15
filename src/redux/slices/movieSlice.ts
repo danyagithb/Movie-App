@@ -1,7 +1,7 @@
 import {createAsyncThunk, createSlice, type PayloadAction} from "@reduxjs/toolkit";
-import type {IMovie} from "../../models/IMovie.ts";
+import type {IMovie} from "../../models/movie/IMovie.ts";
 import {movieService} from "../../services/api.service.ts";
-import type {IMovieDetails} from "../../models/IMovieDetails.ts";
+import type {IMovieDetails} from "../../models/movie/IMovieDetails.ts";
 
 type MovieSliceType = {
     movies: IMovie[],
@@ -13,15 +13,15 @@ const initMovieSliceState: MovieSliceType = {movies: [], movie: null, error: nul
 
 const loadMovies = createAsyncThunk(
     'loadMovies',
-    async (_, thunkAPI) => {
+    async (page: string, thunkAPI) => {
         try {
-            const movies = await movieService.getMovies();
+            const movies = await movieService.getMovies(page);
             return thunkAPI.fulfillWithValue(movies);
         } catch (e) {
             return thunkAPI.rejectWithValue(`some error ${e}`)
         }
     }
-)
+);
 
 const loadMovie = createAsyncThunk(
     'loadMovie',
@@ -29,6 +29,18 @@ const loadMovie = createAsyncThunk(
         try {
             const movie = await movieService.getMovieCard(id);
             return thunkAPI.fulfillWithValue(movie);
+        } catch (e) {
+            return thunkAPI.rejectWithValue(`some error ${e}`)
+        }
+    }
+);
+
+const loadMoviesByGenres = createAsyncThunk(
+    'loadMoviesByGenres',
+    async (genres: number[], thunkAPI) => {
+        try {
+            const movies = await movieService.getMoviesByGenres(genres);
+            return thunkAPI.fulfillWithValue(movies);
         } catch (e) {
             return thunkAPI.rejectWithValue(`some error ${e}`)
         }
@@ -47,6 +59,7 @@ export const movieSlice = createSlice({
             state.error = action.payload as string;
             console.log(state);
         })
+
         .addCase(loadMovie.fulfilled, (state, action: PayloadAction<IMovieDetails>) => {
             state.movie = action.payload
         })
@@ -55,6 +68,14 @@ export const movieSlice = createSlice({
             console.log(state);
         })
 
+        .addCase(loadMoviesByGenres.fulfilled, (state, action: PayloadAction<IMovie[]>) => {
+            state.movies = action.payload
+        })
+        .addCase(loadMoviesByGenres.rejected, (state, action) => {
+            state.error = action.payload as string;
+            console.log(state)
+        })
+
 });
 
-export const moviesActions = {...movieSlice.actions, loadMovies, loadMovie}
+export const moviesActions = {...movieSlice.actions, loadMovies, loadMovie, loadMoviesByGenres};

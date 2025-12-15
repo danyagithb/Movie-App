@@ -1,4 +1,4 @@
-import type {IGenre} from "./IGenre.ts";
+import type {IGenre} from "../genre/IGenre.ts";
 
 export interface IMovieDetails {
     adult:                 boolean;

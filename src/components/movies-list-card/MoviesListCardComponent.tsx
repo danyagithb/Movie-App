@@ -1,5 +1,5 @@
 import type {FC} from "react";
-import type {IMovie} from "../../models/IMovie.ts";
+import type {IMovie} from "../../models/movie/IMovie.ts";
 import {Link} from "react-router";
 
 type CardPropsType = {

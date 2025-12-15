@@ -1,0 +1,22 @@
+import type {FC} from "react";
+import type {IGenre} from "../../models/genre/IGenre.ts";
+
+type GenrePropsType = {
+    genre: IGenre,
+    checked: boolean,
+    onToggle: (id: number) => void
+};
+
+
+const GenreComponent: FC<GenrePropsType> = ({genre, checked, onToggle}) => {
+    return (
+        <div>
+            <label>
+                {genre.name} - {genre.id}
+                <input type="checkbox" checked={checked} onChange={() => onToggle(genre.id)}/>
+            </label>
+        </div>
+    );
+};
+
+export default GenreComponent;

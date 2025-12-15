@@ -1,4 +1,4 @@
-import type {IMovie} from "./IMovie.ts";
+import type {IMovie} from "./movie/IMovie.ts";
 
 export interface IBaseResponseModel {
     page: number,
