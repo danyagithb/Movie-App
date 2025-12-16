@@ -35,6 +35,10 @@ export const movieService = {
         const genreParam = genres.join('|');
         const {data: {results}} = await axiosInstance.get<IBaseResponseModel>(urls.movies.byGenres(genreParam, page))
         return results;
+    },
+    getMoviesByTitle: async (title: string): Promise<IMovie[]> => {
+        const {data: {results}} = await axiosInstance.get<IBaseResponseModel>(urls.movies.byTitle(title));
+        return results;
     }
 };
 

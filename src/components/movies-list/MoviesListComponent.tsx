@@ -6,6 +6,7 @@ import type {IMovie} from "../../models/movie/IMovie.ts";
 import MoviesListCardComponent from "../movies-list-card/MoviesListCardComponent.tsx";
 import {useSearchParams} from "react-router";
 import GenresFilterComponent from "../genres-filter/GenresFilterComponent.tsx";
+import SearchMovieComponent from "../search-movie/SearchMovieComponent.tsx";
 
 const MoviesListComponent = () => {
 
@@ -21,7 +22,10 @@ const MoviesListComponent = () => {
 
     return (
         <div>
-            <GenresFilterComponent/>
+            <div>
+                <SearchMovieComponent/>
+                <GenresFilterComponent/>
+            </div>
             {
                 movies.map((card: IMovie) => <MoviesListCardComponent key={card.id} card={card}/>)
             }

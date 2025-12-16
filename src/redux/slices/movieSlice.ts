@@ -45,7 +45,19 @@ const loadMoviesByGenres = createAsyncThunk(
             return thunkAPI.rejectWithValue(`some error ${e}`)
         }
     }
-)
+);
+
+const loadMoviesByTitle = createAsyncThunk(
+    'loadMoviesByTitle',
+    async (titleValue: string, thunkAPI) => {
+        try {
+            const movies = await movieService.getMoviesByTitle(titleValue);
+            return thunkAPI.fulfillWithValue(movies);
+        } catch (e) {
+            return thunkAPI.rejectWithValue(`some error ${e}`)
+        }
+    }
+);
 
 export const movieSlice = createSlice({
     name: 'movieSlice',
@@ -53,7 +65,7 @@ export const movieSlice = createSlice({
     reducers: {},
     extraReducers: builder => builder
         .addCase(loadMovies.fulfilled, (state, action: PayloadAction<IMovie[]>) => {
-            state.movies = action.payload
+            state.movies = action.payload;
         })
         .addCase(loadMovies.rejected, (state, action) => {
             state.error = action.payload as string;
@@ -61,7 +73,7 @@ export const movieSlice = createSlice({
         })
 
         .addCase(loadMovie.fulfilled, (state, action: PayloadAction<IMovieDetails>) => {
-            state.movie = action.payload
+            state.movie = action.payload;
         })
         .addCase(loadMovie.rejected, (state, action) => {
             state.error = action.payload as string;
@@ -69,13 +81,17 @@ export const movieSlice = createSlice({
         })
 
         .addCase(loadMoviesByGenres.fulfilled, (state, action: PayloadAction<IMovie[]>) => {
-            state.movies = action.payload
+            state.movies = action.payload;
         })
         .addCase(loadMoviesByGenres.rejected, (state, action) => {
             state.error = action.payload as string;
             console.log(state)
         })
 
+        .addCase(loadMoviesByTitle.fulfilled, (state, action: PayloadAction<IMovie[]>) => {
+            state.movies = action.payload;
+        })
+
 });
 
-export const moviesActions = {...movieSlice.actions, loadMovies, loadMovie, loadMoviesByGenres};
+export const moviesActions = {...movieSlice.actions, loadMovies, loadMovie, loadMoviesByGenres, loadMoviesByTitle};
