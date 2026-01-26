@@ -12,8 +12,7 @@ const GenreComponent: FC<GenrePropsType> = ({genre, checked, onToggle}) => {
     return (
         <div>
             <label>
-                {genre.name} - {genre.id}
-                <input type="checkbox" checked={checked} onChange={() => onToggle(genre.id)}/>
+                {genre.name} <input type="checkbox" checked={checked} onChange={() => onToggle(genre.id)}/>
             </label>
         </div>
     );

@@ -1,7 +1,11 @@
+import {Link} from "react-router";
+
 const HeaderComponent = () => {
     return (
-        <div>
-            header
+        <div className={'header'}>
+            <ul>
+                <li><Link to={'/'}>MOVIES</Link></li>
+            </ul>
         </div>
     );
 };

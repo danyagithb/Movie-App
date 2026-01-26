@@ -1,6 +1,8 @@
 import type {FC} from "react";
 import type {IMovie} from "../../models/movie/IMovie.ts";
 import {Link} from "react-router";
+import MovieInfoComponent from "../movie-info/MovieInfoComponent.tsx";
+import PosterPreview from "../poster-preview/PosterPreview.tsx";
 
 type CardPropsType = {
     card: IMovie
@@ -8,9 +10,12 @@ type CardPropsType = {
 
 const MoviesListCardComponent: FC<CardPropsType> = ({card}) => {
     return (
-        <div><Link to={`${card.id}/details`}>
-            {card.title} = {card.id}
-        </Link></div>
+        <div className={'border-1 p-2'}>
+            <Link to={`${card.id}/details`}>
+                <PosterPreview image={card.poster_path} title={card.title}/>
+                <MovieInfoComponent movie={card}/>
+            </Link>
+        </div>
     );
 };
 

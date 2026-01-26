@@ -26,9 +26,11 @@ const MoviesListComponent = () => {
                 <SearchMovieComponent/>
                 <GenresFilterComponent/>
             </div>
-            {
-                movies.map((card: IMovie) => <MoviesListCardComponent key={card.id} card={card}/>)
-            }
+            <div className={'grid grid-cols-4 p-4 gap-4'}>
+                {
+                    movies.map((card: IMovie) => <MoviesListCardComponent key={card.id} card={card}/>)
+                }
+            </div>
         </div>
     );
 };

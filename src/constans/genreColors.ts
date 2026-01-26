@@ -1,0 +1,21 @@
+export const genreColors: Record<string, string> = {
+    Action: "#ACE1AF",
+    Adventure: "#f49c51",
+    Animation: "#87CEEB",
+    Comedy: "#0077A8",
+    Crime: "dark",
+    Documentary: "#9DC183",
+    Drama: "#4D5D53",
+    Family: "red",
+    Fantasy: "#7d7dfd",
+    History: "Purple",
+    Horror: "#f897ff",
+    Music: "green",
+    Mystery: "Coral",
+    Romance: "#d4ef44",
+    Thriller: "dark",
+    "Science Fiction": "#fb1193",
+    "TV Movie": "#94e634",
+    War: "#ed744d",
+    Western: "#7bfd68"
+};
