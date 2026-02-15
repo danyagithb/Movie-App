@@ -7,7 +7,7 @@ export const urls = {
             return '/movie/' + id;
         },
         byGenres: (genres: string, page: string) => {
-            return '/discover/movie?with_genres=' + genres + '?page=' + page;
+            return '/discover/movie?with_genres=' + genres + '&page=' + page;
         },
         byTitle: (title: string) => {
             return '/search/movie?query=' + title;

@@ -10,13 +10,11 @@ const PaginationComponent = () => {
             <button onClick={() => {
                 if(currentPage > 1) {
                     setQuery({page: (--currentPage).toString()});
-                    console.log(currentPage);
                 }
             }}>Prev</button>
 
             <button onClick={() => {
                 setQuery({page: (++currentPage).toString()});
-                console.log(currentPage);
             }}>Next</button>
         </div>
     );
