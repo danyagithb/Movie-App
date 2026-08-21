@@ -20,7 +20,7 @@ const MoviesListCardDetailsComponent: FC<DetailsPropsType> = ({movieId}) => {
     }, [movieId, dispatch]);
 
     return (
-        <div>
+        <div className={"movie-details"}>
             {movie &&
                 <div>
                     <div>{movie.id} - {movie.title}</div>

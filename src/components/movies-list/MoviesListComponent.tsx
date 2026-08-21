@@ -7,6 +7,7 @@ import MoviesListCardComponent from "../movies-list-card/MoviesListCardComponent
 import {useSearchParams} from "react-router";
 import GenresFilterComponent from "../genres-filter/GenresFilterComponent.tsx";
 import SearchMovieComponent from "../search-movie/SearchMovieComponent.tsx";
+import SortedMoviesComponent from "../sorted-movies/SortedMoviesComponent.tsx";
 
 const MoviesListComponent = () => {
 
@@ -30,10 +31,11 @@ const MoviesListComponent = () => {
     }, [query, selectedGenres, dispatch]);
 
     return (
-        <div>
-            <div>
+        <div className={'movies-list'}>
+            <div className={'toolbar'}>
                 <SearchMovieComponent/>
                 <GenresFilterComponent/>
+                <SortedMoviesComponent/>
             </div>
             <div className={'grid grid-cols-4 p-4 gap-4'}>
                 {

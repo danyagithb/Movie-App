@@ -3,7 +3,7 @@ import PaginationComponent from "../components/pagination/PaginationComponent.ts
 
 const MoviesPage = () => {
     return (
-        <div>
+        <div className={'movies-page'}>
             <MoviesListComponent/>
             <PaginationComponent/>
         </div>

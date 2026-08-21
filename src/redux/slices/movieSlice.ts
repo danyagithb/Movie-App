@@ -59,6 +59,18 @@ const loadMoviesByTitle = createAsyncThunk(
     }
 );
 
+const loadSortedMovies = createAsyncThunk(
+    'loadSortedMovies',
+    async ({ sort, page}: {sort: string, page: string}, thunkAPI) => {
+        try {
+            const movies = await movieService.getSortedMovies(sort, page);
+            return thunkAPI.fulfillWithValue(movies);
+        } catch (e) {
+            return thunkAPI.rejectWithValue(`some error ${e}`)
+        }
+    }
+);
+
 export const movieSlice = createSlice({
     name: 'movieSlice',
     initialState: initMovieSliceState,
@@ -92,6 +104,15 @@ export const movieSlice = createSlice({
             state.movies = action.payload;
         })
 
+        .addCase(loadSortedMovies.fulfilled, (state, action: PayloadAction<IMovie[]>) => {
+            state.movies = action.payload
+        })
+
+        .addCase(loadSortedMovies.rejected, (state, action) => {
+            state.error = action.payload as string;
+            console.log(state)
+        })
+
 });
 
-export const moviesActions = {...movieSlice.actions, loadMovies, loadMovie, loadMoviesByGenres, loadMoviesByTitle};
+export const moviesActions = {...movieSlice.actions, loadMovies, loadMovie, loadMoviesByGenres, loadMoviesByTitle, loadSortedMovies};

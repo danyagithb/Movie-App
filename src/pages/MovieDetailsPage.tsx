@@ -6,7 +6,7 @@ const MovieDetailsPage = () => {
     const {movieId} = useParams();
 
     return (
-        <div>
+        <div className={'movies-details-page'}>
             <MoviesListCardDetailsComponent movieId={movieId}/>
         </div>
     );

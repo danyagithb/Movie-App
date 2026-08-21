@@ -6,7 +6,7 @@ const PaginationComponent = () => {
     let currentPage = Number(query.get('page') || '1');
 
     return (
-        <div>
+        <div className={'pagination'}>
             <button onClick={() => {
                 if(currentPage > 1) {
                     setQuery({page: (--currentPage).toString()});

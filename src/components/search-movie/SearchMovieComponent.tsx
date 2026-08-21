@@ -16,7 +16,7 @@ const SearchMovieComponent = () => {
     }
 
     return (
-        <div>
+        <div className={'searchbar'}>
             <form onSubmit={handleSubmit(searchHandler)}>
                 <label>
                     <input type="text" {...register('movieSearchTitle')} className={'border-2'}/>

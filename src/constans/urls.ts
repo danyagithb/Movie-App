@@ -11,6 +11,9 @@ export const urls = {
         },
         byTitle: (title: string) => {
             return '/search/movie?query=' + title;
+        },
+        bySort: (sort: string, page: string) => {
+            return 'discover/movie?sort_by=' + sort + '&page=' + page;
         }
     },
     genres: {

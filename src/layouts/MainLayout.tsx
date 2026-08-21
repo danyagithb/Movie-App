@@ -3,7 +3,7 @@ import {Outlet} from "react-router";
 
 const MainLayout = () => {
     return (
-        <div>
+        <div className={'main-layout'}>
             <HeaderComponent/>
             <Outlet/>
         </div>

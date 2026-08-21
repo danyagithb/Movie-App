@@ -35,7 +35,7 @@ const GenresFilterComponent = () => {
 
 
     return (
-        <div>
+        <div className={'genres'}>
             {
                 genres.map((genre: IGenre) => <GenreComponent
                     key={genre.id}

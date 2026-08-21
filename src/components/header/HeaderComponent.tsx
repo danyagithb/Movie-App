@@ -1,4 +1,5 @@
 import {Link} from "react-router";
+import UserInfoComponent from "../user-info/UserInfoComponent.tsx";
 
 const HeaderComponent = () => {
     return (
@@ -6,6 +7,9 @@ const HeaderComponent = () => {
             <ul>
                 <li><Link to={'/'}>MOVIES</Link></li>
             </ul>
+            <div>
+                <UserInfoComponent/>
+            </div>
         </div>
     );
 };

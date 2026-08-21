@@ -39,6 +39,10 @@ export const movieService = {
     getMoviesByTitle: async (title: string): Promise<IMovie[]> => {
         const {data: {results}} = await axiosInstance.get<IBaseResponseModel>(urls.movies.byTitle(title));
         return results;
+    },
+    getSortedMovies: async (sort: string, page: string = '1'): Promise<IMovie[]> => {
+        const {data: {results}} = await axiosInstance.get<IBaseResponseModel>(urls.movies.bySort(sort, page));
+        return results;
     }
 };
 
