@@ -1,3 +1,4 @@
+import "./movie-list.css";
 import {useEffect} from "react";
 import {useAppDispatch} from "../../redux/hooks/UseAppDispatch.tsx";
 import {useAppSelector} from "../../redux/hooks/UseAppSelector.tsx";
@@ -19,8 +20,6 @@ const MoviesListComponent = () => {
     useEffect(() => {
         const page = query.get('page') || '1';
 
-        // dispatch(moviesActions.loadMovies(page || '1'));
-
         if (selectedGenres.length > 0) {
             dispatch(moviesActions.loadMoviesByGenres({ genres: selectedGenres, page: page }));
         }
@@ -31,18 +30,20 @@ const MoviesListComponent = () => {
     }, [query, selectedGenres, dispatch]);
 
     return (
-        <div className={'movies-list'}>
-            <div className={'toolbar'}>
-                <SearchMovieComponent/>
-                <GenresFilterComponent/>
-                <SortedMoviesComponent/>
+        <section className={'movies-list'}>
+            <div className={"container"}>
+                <div className={'toolbar'}>
+                    <GenresFilterComponent/>
+                    <SearchMovieComponent/>
+                    <SortedMoviesComponent/>
+                </div>
+                <div className={'grid grid-cols-4 p-4 gap-4'}>
+                    {
+                        movies.map((card: IMovie) => <MoviesListCardComponent key={card.id} card={card}/>)
+                    }
+                </div>
             </div>
-            <div className={'grid grid-cols-4 p-4 gap-4'}>
-                {
-                    movies.map((card: IMovie) => <MoviesListCardComponent key={card.id} card={card}/>)
-                }
-            </div>
-        </div>
+        </section>
     );
 };
 

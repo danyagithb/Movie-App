@@ -1,48 +1,31 @@
-import type {FC} from "react";
+import type { FC } from "react";
+import StarComponent from "./StarComponent.tsx";
 
 type RatingPropsType = {
-    rating: number
-}
+    rating: number;
+};
 
-const StarsRatingComponent: FC<RatingPropsType> = ({rating}) => {
-
-    const stars: number = rating / 2; // 0–10 → 0–5
+const StarsRatingComponent: FC<RatingPropsType> = ({ rating }) => {
+    const stars = rating / 2; // 0–10 → 0–5
 
     return (
         <div style={{ display: "flex", gap: "4px" }}>
-            {[1, 2, 3, 4, 5].map((i: number) => {
+            {[1, 2, 3, 4, 5].map((i) => {
                 const isFull = stars >= i;
                 const isHalf = stars >= i - 0.5 && stars < i;
 
                 if (isFull) {
-                    return (
-                        <span key={i} style={{ color: "#F5C518", fontSize: "22px" }}>
-                            ★
-                        </span>
-                    );
+                    // полностью зелёная
+                    return <StarComponent key={i} left="#53a379" right="#53a379"/>;
                 }
 
                 if (isHalf) {
-                    return (
-                        <span
-                            key={i}
-                            style={{
-                                fontSize: "22px",
-                                background: "linear-gradient(90deg, #F5C518 50%, #ccc 50%)",
-                                WebkitBackgroundClip: "text",
-                                color: "transparent",
-                            }}
-                        >
-                            ★
-                        </span>
-                    );
+                    // половинка: левая зелёная, правая серая
+                    return <StarComponent key={i} left="#53a379" right="#716d67"/>;
                 }
 
-                return (
-                    <span key={i} style={{ color: "#ccc", fontSize: "22px" }}>
-                        ★
-                    </span>
-                );
+                // пустая: полностью серая
+                return <StarComponent key={i} left="#716d67" right="#716d67"/>;
             })}
         </div>
     );

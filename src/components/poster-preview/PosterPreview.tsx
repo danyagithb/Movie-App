@@ -10,7 +10,7 @@ const PosterPreview: FC<PosterPropsType> = ({image, title}) => {
     const posterImage = `https://image.tmdb.org/t/p/w342${image}`
 
     return (
-        <div className={'poster-preview'}>
+        <div>
             <img src={posterImage} alt={title}/>
         </div>
     );

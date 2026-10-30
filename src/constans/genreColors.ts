@@ -1,5 +1,5 @@
 export const genreColors: Record<string, string> = {
-    Action: "#ACE1AF",
+    Action: "#235c28",
     Adventure: "#f49c51",
     Animation: "#87CEEB",
     Comedy: "#0077A8",
@@ -9,13 +9,13 @@ export const genreColors: Record<string, string> = {
     Family: "red",
     Fantasy: "#7d7dfd",
     History: "Purple",
-    Horror: "#f897ff",
+    Horror: "#951c9e",
     Music: "green",
     Mystery: "Coral",
     Romance: "#d4ef44",
-    Thriller: "#132202",
+    Thriller: "#456e0f",
     "Science Fiction": "#fb1193",
     "TV Movie": "#94e634",
     War: "#ed744d",
-    Western: "#7bfd68"
+    Western: "#0e7c7c"
 };

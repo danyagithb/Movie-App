@@ -10,7 +10,7 @@ type GenrePropsType = {
 
 const GenreComponent: FC<GenrePropsType> = ({genre, checked, onToggle}) => {
     return (
-        <div className={"genre-item"}>
+        <div className={"text-white"}>
             <label>
                 {genre.name} <input type="checkbox" checked={checked} onChange={() => onToggle(genre.id)}/>
             </label>

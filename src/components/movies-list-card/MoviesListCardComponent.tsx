@@ -10,7 +10,7 @@ type CardPropsType = {
 
 const MoviesListCardComponent: FC<CardPropsType> = ({card}) => {
     return (
-        <div className={'border-1 p-2'}>
+        <div className={'border-2 border-gray-950 p-3'}>
             <Link to={`${card.id}/details`}>
                 <PosterPreview image={card.poster_path} title={card.title}/>
                 <MovieInfoComponent movie={card}/>

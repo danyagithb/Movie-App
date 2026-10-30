@@ -1,3 +1,4 @@
+import "./pagination.css";
 import {useSearchParams} from "react-router";
 
 const PaginationComponent = () => {
@@ -6,17 +7,17 @@ const PaginationComponent = () => {
     let currentPage = Number(query.get('page') || '1');
 
     return (
-        <div className={'pagination'}>
-            <button onClick={() => {
+        <section className={'pagination'}>
+            <button className={"pagination-button"} onClick={() => {
                 if(currentPage > 1) {
                     setQuery({page: (--currentPage).toString()});
                 }
             }}>Prev</button>
 
-            <button onClick={() => {
+            <button className={"pagination-button"} onClick={() => {
                 setQuery({page: (++currentPage).toString()});
             }}>Next</button>
-        </div>
+        </section>
     );
 };
 

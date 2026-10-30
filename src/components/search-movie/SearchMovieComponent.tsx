@@ -16,14 +16,14 @@ const SearchMovieComponent = () => {
     }
 
     return (
-        <div className={'searchbar'}>
+        <div>
             <form onSubmit={handleSubmit(searchHandler)}>
-                <label>
+                <label className={"m-2.5"}>
                     <input type="text" {...register('movieSearchTitle')} className={'border-2'}/>
                     {errors.movieSearchTitle && <div>{errors.movieSearchTitle.message}</div>}
                 </label>
 
-                <button>Search</button>
+                <button className={"bg-fuchsia-950 p-2 w-20 rounded-lg font-bold cursor-pointer"}>Search</button>
             </form>
         </div>
     );

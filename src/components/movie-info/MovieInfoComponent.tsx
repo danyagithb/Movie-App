@@ -1,3 +1,4 @@
+import "./movie-info.css"
 import type {FC} from "react";
 import type {IMovie} from "../../models/movie/IMovie.ts";
 import {useAppSelector} from "../../redux/hooks/UseAppSelector.tsx";
@@ -18,12 +19,12 @@ const MovieInfoComponent: FC<MoviePropsType> = ({movie}) => {
 
     return (
         <div className={'movie-info'}>
-            <h3 className={'title'}>{movie.title}</h3>
-            <p className={'overview'}>{movie.overview}</p>
+            <h3 className={'text-2xl font-bold'}>{movie.title}</h3>
+            <p>{movie.overview}</p>
             <ul className={'badges'}>
                 {movieGenres.map((genre: IGenre) => <GenreBadgeComponent genre={genre} key={genre.id}/>)}
             </ul>
-            <div className={"stars-rating"}>
+            <div>
                 <StarsRatingComponent key={movie.id} rating={movie.vote_average}/>
             </div>
         </div>

@@ -1,3 +1,4 @@
+import "./genres.css";
 import {useAppDispatch} from "../../redux/hooks/UseAppDispatch.tsx";
 import {useAppSelector} from "../../redux/hooks/UseAppSelector.tsx";
 import {useEffect} from "react";

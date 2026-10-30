@@ -9,7 +9,7 @@ const SortedMoviesComponent = () => {
 
     return (
         <div>
-            <select className="border p-2 rounded" onChange={(e) =>
+            <select className=" bg-amber-50 text-black border p-2 rounded-lg" onChange={(e) =>
                 dispatch(moviesActions.loadSortedMovies({
                 sort: e.target.value,
                 page: query.get('page') || '1'
